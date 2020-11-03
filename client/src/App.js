@@ -3,11 +3,20 @@ import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
+import UpdateMovie from './Movies/UpdateMovie';
 import axios from 'axios';
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
-  const [movieList, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState([
+    {
+      id: 5,
+      title: "Tombstone",
+      director: "George P. Cosmatos",
+      metascore: 89,
+      stars: ["Kurt Russell", "Bill Paxton", "Sam Elliot"],
+    },
+  ]);
 
   const getMovieList = () => {
     axios
@@ -34,6 +43,10 @@ const App = () => {
 
       <Route path="/movies/:id">
         <Movie addToSavedList={addToSavedList} />
+      </Route>
+
+      <Route path="/update-movie/:id">
+        <UpdateMovie  movies={movieList} setMovieList={setMovieList}/>
       </Route>
     </>
   );
