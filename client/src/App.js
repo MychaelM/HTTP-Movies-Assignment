@@ -8,19 +8,11 @@ import axios from 'axios';
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
-  const [movieList, setMovieList] = useState([
-    {
-      id: 5,
-      title: "Tombstone",
-      director: "George P. Cosmatos",
-      metascore: 89,
-      stars: ["Kurt Russell", "Bill Paxton", "Sam Elliot"],
-    },
-  ]);
+  const [movieList, setMovieList] = useState([]);
 
   const getMovieList = () => {
     axios
-      .get("http://localhost:5000/api/movies")
+      .get("http://localhost:5002/api/movies")
       .then(res => setMovieList(res.data))
       .catch(err => console.log(err.response));
   };
